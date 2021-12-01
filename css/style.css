@@ -1,0 +1,20 @@
+#bgImg{
+    background-image: url('../imgs/girl1.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 10;
+
+}
+
+ul li{
+    list-style-type: none;
+}
+
+
+@media screen and ( max-width:412px) {
+    .ck.ck-toolbar.ck-toolbar_grouping > .ck-toolbar__items {
+        flex-wrap: wrap !important;
+        max-width: 100%;
+    }
+}
