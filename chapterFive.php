@@ -49,7 +49,7 @@
                                 
                                 if($conn->query($sql_string)){
                                     echo 'Chapter Five  Successfully Submitted';
-                                    header('refresh:2 URL=dashboard.php');
+                                    // header('refresh:2 URL=dashboard.php');
                                 }else{
                                     echo'An error occured ' . $conn->error;
                                 }

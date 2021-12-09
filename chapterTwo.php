@@ -41,7 +41,7 @@
                             include_once 'connect.php';
 
                             if(isset($_POST['subChp2'])){
-                                $chapter2=$_POST['chapter2'];
+                                $chapter2 = $_POST['chapter2'];
                                 $stdid = $user_data['id'];
                                 
                                 $sql_string="INSERT INTO chapter2(student_id, chapter2)
@@ -49,7 +49,7 @@
                                 
                                 if($conn->query($sql_string)){
                                     echo 'Chapter Two  Successfully Submitted';
-                                    header('refresh:2 URL=dashboard.php');
+                                    // header('refresh:2 URL=dashboard.php');
                                 }else{
                                     echo'An error occured ' . $conn->error;
                                 }

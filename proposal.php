@@ -20,7 +20,7 @@
         <?php 
             include_once 'sidebar.php'; 
             include_once  'script.php';
-        
+            include_once  'notification/Notify.php';    
         ?>
     
     <!-- Main Content -->
@@ -39,50 +39,65 @@
                     <form action="" method="post">
                         <?php 
                             include_once 'connect.php';
+                            $stdid = $user_data['id'];
+                            $notify = new Notify;
 
                             if(isset($_POST['prosub'])){
-                                $stdid = $user_data['id'];
                                 $topic=$_POST['topic'];
                                 $motivation=$_POST['motivation'];
                                 $proposal=$_POST['proposal'];
                                 
-                                $sql_string="INSERT INTO proposal(student_id, topic, motivation, proposal)
-                                VALUES('".$stdid."', '".$topic."', '".$motivation."', '".$proposal."')";
-                                
-                                if($conn->query($sql_string)){
-                                    echo 'Proposal  Successfully Submitted';
-                                    header('refresh:2 URL=dashboard.php');
+                                // Check if the student already have proposal
+                                $query = $conn->query("SELECT * FROM proposal WHERE student_id='$stdid '");
+                                if ($query->num_rows > 0) {
+                                    $sql_string= "UPDATE proposal SET topic='$topic', motivation='$motivation', proposal='$proposal', status='review' WHERE student_id='$stdid '";
+                                    if($conn->query($sql_string)){
+                                        $notify->sendNotification($stdid, '3', 'Just updated my proposal', 'proposal');   
+                                        echo 'Proposal  Successfully Updated';
+                                    }else{
+                                        echo'An error occured ' . $conn->error;
+                                    }
                                 }else{
-                                    echo'An error occured ' . $conn->error;
+                                    $sql_string="INSERT INTO proposal(student_id, topic, motivation, proposal)
+                                    VALUES('".$stdid."', '".$topic."', '".$motivation."', '".$proposal."')";
+                                    if($conn->query($sql_string)){
+                                        $notify->sendNotification($stdid, '3', 'Just uploaded my proposal', 'proposal');   
+                                        echo 'Proposal  Successfully Submitted';
+                                        // header('refresh:2 URL=dashboard.php');
+                                    }else{
+                                        echo'An error occured ' . $conn->error;
+                                    }
                                 }
-                            
                             }
 
+                            // Fetch Existing Data
+                            $exist_data = $conn->query("SELECT * FROM proposal WHERE student_id='$stdid '");
+                            $proposal = $exist_data->fetch_assoc();
                         ?>
                         <div class="grid md:grid-cols-2 grid-cols-1 gap-5 font-san">
                             <div >
                                 <label for="" class="capitalize text-gray-800 text-lg">Topic:</label>
                                 <div class=" text-gray-700 rounded-lg mb-3">
-                                    <input type="text" id="topic" name="topic"  class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-white bg-opacity-75 shadow-lg h-12" placeholder="Topic" required>
+                                    <input type="text" id="topic" name="topic" value="<?php echo $proposal['topic'] ?>" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-white bg-opacity-75 shadow-lg h-12" placeholder="Topic" required>
                                 </div>
                             </div>
 
                             <div>
                                 <label for="" class="capitalize text-gray-800 text-lg">Motivation</label>
                                 <div class=" text-gray-700 rounded-lg mb-3">
-                                    <input type="text" id="motivation" name="motivation"  class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-white bg-opacity-75 shadow-lg h-12" placeholder="Motivation" required>
+                                    <input type="text" id="motivation" name="motivation"  value="<?php echo $proposal['motivation'] ?>" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-white bg-opacity-75 shadow-lg h-12" placeholder="Motivation" required>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-4">
                             <label for="" class="capitalize text-gray-800 text-lg">Proposal</label>
                             <div class=" text-gray-700 rounded-lg mb-3 w-ful bg-red-500">
-                                <textarea name="proposal" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg w-full "></textarea>
+                                <textarea name="proposal" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg w-full "><?php echo $proposal['proposal'] ?></textarea>
                             </div>
                         </div>
 
                         <div class="float-right text-center text-md mb-3">
-                            <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg" name="prosub">Submit Proposal</button>
+                            <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg" name="prosub">Save Proposal</button>
                         </div>
                     </form>
                 </div>

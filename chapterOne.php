@@ -42,13 +42,14 @@
 
                             if(isset($_POST['subChp1'])){
                                 $chapter1=$_POST['chapter1'];
+                                $stdid = $user_data['id'];
                                 
-                                $sql_string="INSERT INTO chapter1(chapter1)
-                                VALUES('".$chapter1."')";
+                                $sql_string="INSERT INTO chapter1(student_id, chapter1)
+                                VALUES('".$stdid."','".$chapter1."')";
                                 
                                 if($conn->query($sql_string)){
                                     echo 'Chapter One  Successfully Submitted';
-                                    header('refresh:2 URL=dashboard.php');
+                                    // header('refresh:2 URL=dashboard.php');
                                 }else{
                                     echo'An error occured ' . $conn->error;
                                 }
