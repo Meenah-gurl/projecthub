@@ -4,11 +4,11 @@ include_once  '../notification/Notify.php';
 $notify = new Notify;
 
 $student_id = $_POST['student_id'];
-$proposal = $_POST['proposal'];
+$chapter1 = $_POST['chapter1'];
 
-$sql_string= "UPDATE proposal SET proposal='$proposal' WHERE student_id='$student_id '";
+$sql_string= "UPDATE chapter1 SET chapter1='$chapter1' WHERE student_id='$student_id '";
     if($conn->query($sql_string)){
-        $notify->sendNotification('3', $stdid, 'Just updated my proposal', 'proposal');   
+        $notify->sendNotification('3', $student_id, 'Just updated my chapter one', 'chapter1');   
         echo json_encode([
             'status' => 'success'
         ]);

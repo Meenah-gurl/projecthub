@@ -43,16 +43,26 @@
 
     <!-- Main Content -->
     <div id="main" class="min-h-screen -mr-0 md:mr-80  py-3 px-4 md:px-8">
-        <div class="bg-blue-500 rounded-xl py-4 px-4 text-white shadow-xl">
+        <div class="bg-blue-500 rounded-xl py-4 px-4 text-white shadow-xl mb-7">
             <h2 class="text-2xl">
                Lecturer  Dashboard
             </h2>
+        </div>
+
+        <div class="select-con w-80 mt-3absolute border bg-white rounded-lg overflow-hidden  cursor-pointer text-gray-700  shadow-lg  z-20">
+            <div class="relative -top-2 shadow-md p-3">
+                <input type="" name="student" placeholder="Search for a student" id="searchForStudent" class="w-80 rounded-lg searchInput border-none outline-none py-1 pl-2 pr-8">
+                <i class="fa fa-search absolute right-6 top-5"></i>
+            </div>
+            <!-- <div class="StudentList"></div> -->
         </div>
 
         <!-- Other Content -->
         <div class="mt-5 grid md:grid-cols-2 grid-cols-1 gap-4">
             <div class="px-4 h-full mb-5">
                 <div class="overflow-y-scroll">
+                    <!-- search -->
+                
                     <?php
                         include_once 'connect.php';
 
@@ -135,5 +145,51 @@
     <?php include_once 'script.php'; ?>
    
     <script src="ckeditor5/ckeditor.js"></script>
+
+    <script>
+        $('.searchInput').on('keyup',function(){
+        var val = $(this).val()
+        var action = $(this).attr('id')
+        getData(action,val)
+        })
+
+        $StudentList=[];
+
+        function getData (action,val){
+            $data = {action:action, name:val};
+            $.ajax({
+                type:'post',
+                url:'backend/query2.php',
+                data:$data,
+                dataType:'json',
+                success: function(respond) {
+                    if(respond.type == 'student'){
+                        $StudentList=[];
+                        respond.students.forEach((student) => {
+                            $StudentList += `
+                                <div class="option hover:bg-blue-600 cursor-pointer hover:text-white  bg-white">
+                                    <input type="radio" name="student" value="${student.id}" class="w-full rounded-lg hidden appearance-none" id="std_name">
+                                    <label for="std_name" class="nameSelector block px-4 cursor-pointer py-1">${student.fullname}</label>
+                                </div>
+                            `
+                        });
+                    }else{
+                    alert ('Error')
+                    }
+                    $('.StudentList').html($StudentList)
+                }
+                
+            })
+        }
+
+        $('.StudentList').on('click','.nameSelector',function() {
+            $name = $(this).text()
+            $(this).parent().parent().parent().siblings().children('span').text($name);
+            $(this).parent().parent().parent().addClass('hidden');
+            $(this).parent().parent().parent().siblings().addClass('rounded-b-lg')
+        })
+
+        getData('searchForStudent','')
+    </script>
 </body>
 </html>

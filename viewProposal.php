@@ -10,12 +10,21 @@
                     <div class="mb-4">
                         <textarea name="proposal" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "><?php echo $row['proposal'];?></textarea>
                     </div>
+
+                    <!-- <div class="mb-4">
+                        <label for="comments" class="block text-lg text-gray-700 font-semibold">Coments</label>
+                        <textarea name="coments" id="coment" class="block w-full px-2"><?php echo $row['coment'];?></textarea>
+                    </div> -->
+
                     <div class="mb-4">
-                        <button>
+                        <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg">
                             Update Proposal
                         </button>
                     </div>
                 </form>
+                <div>
+                   
+                </div>
             <?php
         }else{
             ?>
@@ -49,6 +58,10 @@
     } )
     .then((editor) => {
         ckedit_data = editor;
+        // coment = coments;
+    })
+    .then((coment) => {
+         coment = coment;
     })
     .catch( error => {
         console.log( error );
@@ -59,7 +72,7 @@
         e.preventDefault();
         let dis_data = {
             student_id : '<?php echo $stud; ?>',
-            proposal: ckedit_data.getData()
+            proposal: ckedit_data.getData(),
         }
         $.ajax({
             type:'POST',
@@ -68,7 +81,7 @@
             dataType:'json',
             success:function(res) {
                 if (res.status == 'success') {
-                    alert('Update')
+                    alert('Updated')
                 } else {
                     alert('Error')
                 }

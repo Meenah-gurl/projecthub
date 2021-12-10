@@ -20,6 +20,7 @@
         <?php 
             include_once 'sidebar.php'; 
             include_once  'script.php';
+            include_once  'notification/Notify.php';
         
         ?>
     
@@ -39,35 +40,51 @@
                     <form action="" method="post">
                         <?php 
                             include_once 'connect.php';
+                            $stdid = $user_data['id'];
+                            $notify = new Notify;
 
                             if(isset($_POST['subChp1'])){
                                 $chapter1=$_POST['chapter1'];
-                                $stdid = $user_data['id'];
                                 
-                                $sql_string="INSERT INTO chapter1(student_id, chapter1)
-                                VALUES('".$stdid."','".$chapter1."')";
-                                
-                                if($conn->query($sql_string)){
-                                    echo 'Chapter One  Successfully Submitted';
-                                    // header('refresh:2 URL=dashboard.php');
+
+                                $query = $conn->query("SELECT * FROM chapter1 WHERE student_id='$stdid '");
+                                if ($query->num_rows > 0) {
+                                    $sql_string= "UPDATE chapter1 SET chapter1='$chapter1', status='review' WHERE student_id='$stdid '";
+                                    if($conn->query($sql_string)){
+                                        $notify->sendNotification($stdid, '3', 'Just updated my chapter one', 'chapter');   
+                                        echo 'Chapter One  Successfully Updated';
+                                    }else{
+                                        echo'An error occured ' . $conn->error; 
+                                    }
                                 }else{
-                                    echo'An error occured ' . $conn->error;
+                                    $sql_string="INSERT INTO chapter1(student_id, chapter1)
+                                    VALUES('".$stdid."','".$chapter1."')";
+                                    if($conn->query($sql_string)){
+                                        $notify->sendNotification($stdid, '3', 'Just uploaded my chapter one', 'chapter');   
+                                        echo 'chapter one   Successfully Submitted';
+                                    }else{
+                                        echo'An error occured ' . $conn->error;
+                                    }
                                 }
                             
                             }
 
+                            // Fetch Existing Data
+                            $exist_data = $conn->query("SELECT * FROM chapter1 WHERE student_id='$stdid'");
+                            $chapter1 = $exist_data->fetch_assoc();
+                           
                         ?>
                         
                         <div class="mt-4">
                             <label for="" class="capitalize text-gray-800 text-lg">Main-body</label>
                             <div class=" text-gray-700 rounded-lg mb-3">
-                                <textarea name="chapter1" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "></textarea>
+                                <textarea name="chapter1" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "><?php echo  $chapter1['chapter1'] ?></textarea>
                                 <!-- <input type="text" id="title" v-model="title" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-blue-600 bg-opacity-75 shadow-lg h-12" placeholder="Motivation" required> -->
                             </div>
                         </div>
 
                         <div class="float-right text-center text-md">
-                            <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg" name="subChp1">Submit Chapter One</button>
+                            <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg" name="subChp1">Save Chapter One</button>
                         </div>
                     </form>
                 </div>

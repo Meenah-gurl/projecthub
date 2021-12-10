@@ -102,7 +102,7 @@ $(document).ready(function(){
                 data:$data,
                 dataType:'html',
                 success:function(res3) {
-                    $('.viewChapterOne').html(res3);
+                    $('#current_content').html(res3);
                 }
             })
         }

@@ -38,7 +38,7 @@
                   <div class="col-span-2">
                         <div class="text-gray-700">
                             <p class="text-2xl text-blue-600">Welcome back <span><?php echo $user_data['fullname'] ?></p></span></p>
-                            <p class="capitalize text-md font-semibold text-gray-600">supervisor: Dr. oladimeji s</p>
+                            <p class="capitalize text-md font-semibold text-gray-600">supervisor: mr destiny brotobor</p>
                             <p class="text-sm mt-2">You have gone 30% of your project.</p>
                             <p class="text-sm">Keep it put to get a faster result.</p>
                         </div>

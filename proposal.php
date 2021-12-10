@@ -55,7 +55,7 @@
                                         $notify->sendNotification($stdid, '3', 'Just updated my proposal', 'proposal');   
                                         echo 'Proposal  Successfully Updated';
                                     }else{
-                                        echo'An error occured ' . $conn->error;
+                                        echo'An error occured ' . $conn->error; 
                                     }
                                 }else{
                                     $sql_string="INSERT INTO proposal(student_id, topic, motivation, proposal)
