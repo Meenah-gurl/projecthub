@@ -108,6 +108,9 @@ $(document).ready(function(){
         }
     })
 
+    $('.toggleNotification').on('click',function () {
+        $('.noti').toggleClass('hidden')
+    })
 
 
     
