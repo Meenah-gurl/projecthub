@@ -35,7 +35,7 @@
 
         <!-- other content -->
 
-        <div class="mt-5 grid md:grid-cols-3 grid-cols-1 font-san gap-6">
+        <div class="mt-5 grid md:grid-cols-1 grid-cols-1 font-san gap-6">
             <div class="col-span-2 px-4 space-y-3">
                 <div>
                     View Supervisors Details!
@@ -49,7 +49,7 @@
                         <div class="bg-white py-2 px-2 flex-grow">
                             Fullname
                         </div>
-                        <div class="bg-white py-2 px-2 w-60 truncate">
+                        <div class="bg-white py-2 px-2 w-60 flex-grow flex-intial flex-shrink-0">
                             Email
                         </div>
                         <div class="bg-white py-2 px-2 rounded-r-lg">
@@ -72,13 +72,13 @@
                                             $SN++;
                                             ?>
                                             <div class="flex rounded-lg divide-x font-san shadow-lg text-md text-gray-700">
-                                                <div class="bg-white py-2 px-1 border-gray-500 rounded-l-lg">
+                                                <div class="bg-white py-2 px-2 border-gray-500 rounded-l-lg">
                                                     <?php  echo $SN?>
                                                 </div>
                                                 <div class="bg-white py-2 px-2 flex-grow">
                                                         <?php echo $row['fullname'] ?>
                                                 </div>
-                                                <div class="bg-white py-2 px-2 w-60 truncate">
+                                                <div class="bg-white py-2 px-4 w-60 truncate flex-initial flex-shrink-0">
                                                         <?php echo $row['email'] ?>
                                                 </div>
                                                 <div class="bg-white py-2 px-2 rounded-r-lg">
@@ -107,10 +107,6 @@
 
 
                 </div>
-            </div>
-
-            <div>
-                vbnkjgkx
             </div>
         </div>
     </div>

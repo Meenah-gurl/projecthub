@@ -135,7 +135,7 @@
                         <small class="text-gray-700 mt-4">1 hour ago</small>
                     </div>
 
-                    <div class="py-3 px-3 rounded-lg shadow-xl ">
+                    <div class="py-3 px-3 rounded-lg shadow-xl">
                         <p class="text-gray-700 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam animi labore doloremque.</p>
                         <small class="text-gray-700 mt-4">1 hour ago</small>
                     </div>

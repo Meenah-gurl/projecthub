@@ -38,6 +38,8 @@
         // include_once 'sidebar.php'; 
         include_once  'script.php';
         include_once 'sidebar_lec.php';
+        include_once  'notification/Notify.php';    
+       
 
     ?>
 
@@ -49,13 +51,8 @@
             </h2>
         </div>
 
-        <div class="select-con w-80 mt-3absolute border bg-white rounded-lg overflow-hidden  cursor-pointer text-gray-700  shadow-lg  z-20">
-            <div class="relative -top-2 shadow-md p-3">
-                <input type="" name="student" placeholder="Search for a student" id="searchForStudent" class="w-80 rounded-lg searchInput border-none outline-none py-1 pl-2 pr-8">
-                <i class="fa fa-search absolute right-6 top-5"></i>
-            </div>
-            <!-- <div class="StudentList"></div> -->
-        </div>
+
+        
 
         <!-- Other Content -->
         <div class="mt-5 grid md:grid-cols-2 grid-cols-1 gap-4">
@@ -66,19 +63,21 @@
                     <?php
                         include_once 'connect.php';
 
+
                         $sql = "SELECT * FROM users";
                         if($result = mysqli_query($conn, $sql)){
                             if(mysqli_num_rows($result) > 0){
                                 ?>
-                                    <table>
+                                    <input type="text" class="mb-3 border-none outline-none bg-gray-100" name="search" id="search" placeholder="Search for names..">
+                                    <table id="myTable">
                                         <thead >
-                                            <tr > 
+                                              
                                                 <th class="px-2 py-2">id</th>
                                                 <th class="px-2 py-2">fullname</th>
                                                 <th class="px-2 py-2">regno</th>
                                                 <th class="px-2 py-2">level</th>
                                                 <th class="px-2 py-2">programme</th>
-                                            </tr>
+                                            
                                         </thead>
                                         <tbody>
                                             <div class="overflow-y-auto trow">
@@ -139,6 +138,55 @@
                 <div id="viewChapterFour" class="viewChapterFour hidden"></div>
                 <div id="viewChapterFive" class="viewChapterFive hidden"></div> -->
             </div>
+
+
+            <div class="mx-auto">
+                <form  method="post">
+                    <?php
+                        include_once 'connect.php';
+                        $notify = new Notify;
+                        $superid = $user_data['id'];
+                        //  $student_id='stdid';
+                        if (isset($_POST['btnsendComment'])){
+                            $comment = ['comment'];
+
+
+                            $query = $conn->query("SELECT * FROM coments WHERE sender_id='$superid '");
+                            if ($query->num_rows > 0) {
+                                $sql_string= "UPDATE coments SET sender_id='$superid',  coment='$comment'";
+                                if($conn->query($sql_string)){
+                                    echo 'comment  Successfully Updated';
+                                }else{
+                                    echo'An error occured ' . $conn->error; 
+                                }
+                            }else{
+                                $sql_string="INSERT INTO coments ( sender_id, coment)
+                                VALUES('".$superid."', '".$comment."')";
+                                if($conn->query($sql_string)){
+                                    // $notify->sendNotification($stdid, '3', 'Just uploaded my proposal', 'proposal');   
+                                    echo 'comment  Successfully Submitted';
+                                    // header('refresh:2 URL=dashboard.php');
+                                }else{
+                                    echo'An error occured ' . $conn->error;
+                                }
+                            }
+                        } 
+                        
+                         // Fetch Existing Data
+                         $exist_data = $conn->query("SELECT * FROM coments WHERE sender_id='$superid '");
+                         //  ($exist_data->num_rows > 0) 
+                             $comment = $exist_data->fetch_assoc();
+                            
+                    ?>
+                    <!-- <div class="text-center mb-2">
+                        <h4 class="text-lg text-gray-800 font-semibold capitalize">write a comment</h4>
+                    </div>
+                   
+                     <textarea name="" id="" class="comment outline-none w-full mb-2 px-2"><?php echo $comment ['coment'] ?></textarea>
+
+                    <button class="comment bg-blue-600 text-white py-1 px-2 rounded-md" name="btnsendComment">Send</button> -->
+                </form>
+            </div>
         </div>
     </div>
 
@@ -147,49 +195,33 @@
     <script src="ckeditor5/ckeditor.js"></script>
 
     <script>
-        $('.searchInput').on('keyup',function(){
-        var val = $(this).val()
-        var action = $(this).attr('id')
-        getData(action,val)
-        })
+    $(document).ready(function(){
+        $('.comment').on('click', function(){
+            $getId = $(this).attr('id');
+            // $('#pensioner_id').val($getId);
+        });
 
-        $StudentList=[];
+        $('#search').keyup(function(){ 
+            search_table($(this).val());
+        });
 
-        function getData (action,val){
-            $data = {action:action, name:val};
-            $.ajax({
-                type:'post',
-                url:'backend/query2.php',
-                data:$data,
-                dataType:'json',
-                success: function(respond) {
-                    if(respond.type == 'student'){
-                        $StudentList=[];
-                        respond.students.forEach((student) => {
-                            $StudentList += `
-                                <div class="option hover:bg-blue-600 cursor-pointer hover:text-white  bg-white">
-                                    <input type="radio" name="student" value="${student.id}" class="w-full rounded-lg hidden appearance-none" id="std_name">
-                                    <label for="std_name" class="nameSelector block px-4 cursor-pointer py-1">${student.fullname}</label>
-                                </div>
-                            `
-                        });
-                    }else{
-                    alert ('Error')
+        function search_table(value){
+            $('#myTable tr').each(function(){
+                var found = 'false';
+                $(this).each(function(){
+                    if($(this).text().toLowerCase().indexOf(value.toLowerCase())>=0){
+                        found= 'true';
                     }
-                    $('.StudentList').html($StudentList)
+                });
+                if(found=='true'){
+                    $(this).show();
                 }
-                
+                else{
+                    $(this).hide();
+                }
             })
         }
-
-        $('.StudentList').on('click','.nameSelector',function() {
-            $name = $(this).text()
-            $(this).parent().parent().parent().siblings().children('span').text($name);
-            $(this).parent().parent().parent().addClass('hidden');
-            $(this).parent().parent().parent().siblings().addClass('rounded-b-lg')
-        })
-
-        getData('searchForStudent','')
-    </script>
+    })
+</script>
 </body>
 </html>

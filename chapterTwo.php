@@ -20,6 +20,7 @@
         <?php 
             include_once 'sidebar.php'; 
             include_once  'script.php';
+            include_once  'notification/Notify.php';
         
         ?>
     
@@ -39,22 +40,36 @@
                     <form action="" method="post">
                         <?php 
                             include_once 'connect.php';
+                            $stdid = $user_data['id'];
+                            $notify = new Notify;
+
 
                             if(isset($_POST['subChp2'])){
-                                $chapter2 = $_POST['chapter2'];
-                                $stdid = $user_data['id'];
-                                
-                                $sql_string="INSERT INTO chapter2(student_id, chapter2)
-                                VALUES( '".$stdid."', '".$chapter2."')";
-                                
-                                if($conn->query($sql_string)){
-                                    echo 'Chapter Two  Successfully Submitted';
-                                    // header('refresh:2 URL=dashboard.php');
+                                $query = $conn->query("SELECT * FROM chapter2 WHERE student_id='$stdid '");
+                                if ($query->num_rows > 0) {
+                                    $sql_string= "UPDATE chapter2 SET chapter1='$chapter2', status='review' WHERE student_id='$stdid '";
+                                    if($conn->query($sql_string)){
+                                        $notify->sendNotification($stdid, '3', 'Just updated my chapter two', 'chapter');   
+                                        echo 'Chapter One  Successfully Updated';
+                                    }else{
+                                        echo'An error occured ' . $conn->error; 
+                                    }
                                 }else{
-                                    echo'An error occured ' . $conn->error;
+                                    $sql_string="INSERT INTO chapter2(student_id, chapter2)
+                                    VALUES('".$stdid."','".$chapter1."')";
+                                    if($conn->query($sql_string)){
+                                        $notify->sendNotification($stdid, '3', 'Just uploaded my chapter one', 'chapter');   
+                                        echo 'chapter two   Successfully Submitted';
+                                    }else{
+                                        echo'An error occured ' . $conn->error;
+                                    }
                                 }
                             
                             }
+
+                             // Fetch Existing Data
+                             $exist_data = $conn->query("SELECT * FROM chapter2 WHERE student_id='$stdid'");
+                             $chapter2 = $exist_data->fetch_assoc();
 
                         ?>
                         

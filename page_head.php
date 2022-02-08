@@ -20,7 +20,7 @@ include_once 'connect.php';
         header('location:index.php');
     }
 ?>
-<div class="w-full text-white text-lg font-bold font-san py-3 px-3 text-blue-700 flex bg-gray-100 shadow-md">
+<div class="w-full text-white text-lg font-bold font-san py-3 px-3 text-blue-800 flex bg-gray-100 shadow-md">
     <div class="flex-grow">
         ProjectHub
     </div>
@@ -30,7 +30,7 @@ include_once 'connect.php';
                 <i class="fa fa-bell"></i>
             </a>
             <div class="absolute noti hidden w-8 h-8 bg-white transform rotate-45"></div>
-            <div class="absolute noti hidden flex flex-col w-72 overflow-hidden bg-white text-black shadow-lg rounded-lg -right-1">
+            <div class="absolute  z-1000 noti hidden flex flex-col w-72 overflow-hidden bg-white text-black shadow-lg rounded-lg -right-1">
                 <div class="p-3 text-xl font-bold">
                     Notifications
                 </div>

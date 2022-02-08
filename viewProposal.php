@@ -11,11 +11,6 @@
                         <textarea name="proposal" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "><?php echo $row['proposal'];?></textarea>
                     </div>
 
-                    <!-- <div class="mb-4">
-                        <label for="comments" class="block text-lg text-gray-700 font-semibold">Coments</label>
-                        <textarea name="coments" id="coment" class="block w-full px-2"><?php echo $row['coment'];?></textarea>
-                    </div> -->
-
                     <div class="mb-4">
                         <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg">
                             Update Proposal
@@ -32,6 +27,30 @@
             <?php
         }
     ?>
+
+    <!-- <div>
+        <form  method="post" name="form_coment">
+
+        <div>
+            <label for="studentId">Student id</label>
+            <input type="text" class="border-none outline-none" id="std_id" name="std_id">
+        </div>
+        <div>
+            <label for="studentId">super id</label>
+            <input type="text" class="border-none outline-none" id="std_id" name="super_id">
+        </div>
+        <div class="mb-4">
+            <label for="comments" class="block text-lg text-gray-700 font-semibold">Coments</label>
+            <textarea name="coments" id="coment" class="block w-full px-2"></textarea>
+        </div>
+
+        <div class="mb-4">
+        <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg">
+             Update coment
+        </button>
+        </div>
+        </form>
+    </div> -->
 </div>
 <script>
     var ckedit_data = '';
@@ -60,9 +79,7 @@
         ckedit_data = editor;
         // coment = coments;
     })
-    .then((coment) => {
-         coment = coment;
-    })
+    
     .catch( error => {
         console.log( error );
     } );
@@ -88,6 +105,31 @@
             }
         })
     })
+
+    // $('form[name=form_coment]').on('submit',function(e) {
+    //     e.preventDefault();
+    //     let comment_data ={
+    //         std_id : ',
+    //         // 
+    //         alert (std_id);
+    //     }
+
+    //     $.ajax({
+    //         type:'POST',
+    //         URL: 'lec_data.php';
+    //         data: comment_data,
+    //         dataType: 'json',
+    //         success:function res('success') {
+    //             success:function(res) {
+    //             if (res.status == 'success') {
+    //                 alert('Updated')
+    //             } else {
+    //                 alert('Error')
+    //             }
+    //         }
+    //         }
+    //     })
+    // })
 
     
 </script>

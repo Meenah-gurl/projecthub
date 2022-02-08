@@ -35,7 +35,7 @@
 
         <!-- other content -->
 
-        <div class="mt-5 grid md:grid-cols-3 grid-cols-1 font-san gap-6">
+        <div class="mt-5 grid md:grid-cols-1 grid-cols-1 font-san gap-6">
             <div class="col-span-2 px-4 space-y-3">
                 <div>
                     View Students Details!
@@ -120,9 +120,7 @@
                 </div>
             </div>
 
-            <div>
-                vbnkjgkx
-            </div>
+           
         </div>
     </div>
 </body>

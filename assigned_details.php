@@ -50,7 +50,7 @@
                             <div class="relative selectParent rounded-t-lg rounded-b-lg border cursor-pointer w-full bg-white px-2 py-4 shadow-md">
                                 <span>Select a student</span>
                                 <i class="fa absolute right-4 top-5 fa-caret-down"></i>
-                            </div>
+                           </div>
                             <div class="select-con hidden w-full absolute border bg-white rounded-b-lg overflow-hidden  cursor-pointer text-gray-700  shadow-lg  z-20">
                                 <div class="relative top-0 shadow-md p-3">
                                     <input type="" name="student" placeholder="Search for a student" id="searchForStudent" class="w-full rounded-lg searchInput border py-1 pl-2 pr-8">
@@ -116,41 +116,33 @@
 
                         $SN = 0;
 
-                        $sql = "SELECT * FROM users";
+                        $user_data = $_SESSION['$user_data'];
+                        $sql = "SELECT * FROM assign WHERE std_id ='$user_data' AND supervisor_id = '$$user_data'";
                         if($result = mysqli_query($conn, $sql)){
                             if(mysqli_num_rows($result) > 0){
-                               
-                                while($row = mysqli_fetch_array($result)){
-                                    if ($row['role'] != 'admin'){
-                                        if($row['role'] == 'student') {
-                                            $SN++;
+                                $user_data = mysqli_fetch_assoc($result);
+
+                                $SN++;
                                             ?>
                                             <div class="flex rounded-lg divide-x font-san shadow-md text-md text-gray-700">
                                                 <div class="bg-white py-2 px-2 border-gray-500 rounded-l-lg">
                                                     <?php  echo $SN?>
                                                 </div>
                                                 <div class="bg-white py-2 px-2 flex-grow">
-                                                        <?php echo $row['fullname'] ?>
+                                                        <?php echo $$user_data['fullname'] ?>
                                                 </div>
                                                 <div class="bg-white py-2 px-2 w-60">
-                                                        <?php echo $row['regno'] ?>
+                                                        <?php echo $$user_data['regno'] ?>
                                                 </div>
                                                 <div class="bg-white py-2 px-2 w-60">
-                                                        <?php echo $row['level'] ?>
+                                                        <?php echo $$user_data['level'] ?>
                                                 </div>
                                                 <div class="bg-white py-2 px-2 w-60 rounded-r-lg">
-                                                        <?php echo $row['programme'] ?>
+                                                        <?php echo $$user_data['programme'] ?>
                                                 </div>
                                                 
                                             </div>
                                       <?php
-                                        }
-                                        
-                                        
-                                    }
-                                    
-                                
-                                }
                                
                             }
                             

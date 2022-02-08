@@ -39,10 +39,10 @@
 
                 <div class="col-span-1  mx-auto ">
                     <div class="bg-blue-600 py-2 px-2 text-center text-gray-100 rounded-md">
-                    All Comments
+                   Information
                     </div>
                     
-                    <div class="bg-white shadow-lg rounded-lg py-5 px-6 mt-3">
+                    <!-- <div class="bg-white shadow-lg rounded-lg py-5 px-6 mt-3">
                         <div class="py-3 px-3 rounded-lg shadow-xl ">
                             <p class="text-gray-700 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam animi labore doloremque.</p>
                             <small class="text-gray-700 mt-4">1 hour ago</small>
@@ -56,7 +56,7 @@
                             <p class="text-gray-700 text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam animi labore doloremque.</p>
                             <small class="text-gray-700 mt-4">1 hour ago</small>
                         </div>
-                    </div>
+                    </div> -->
             </div>
         </div>
 

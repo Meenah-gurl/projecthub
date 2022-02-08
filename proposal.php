@@ -72,9 +72,11 @@
 
                             // Fetch Existing Data
                             $exist_data = $conn->query("SELECT * FROM proposal WHERE student_id='$stdid '");
-                            $proposal = $exist_data->fetch_assoc();
-                        ?>
-                        <div class="grid md:grid-cols-2 grid-cols-1 gap-5 font-san">
+                            //  ($exist_data->num_rows > 0) 
+                                $proposal = $exist_data->fetch_assoc();
+
+                                ?>
+                                    <div class="grid md:grid-cols-2 grid-cols-1 gap-5 font-san">
                             <div >
                                 <label for="" class="capitalize text-gray-800 text-lg">Topic:</label>
                                 <div class=" text-gray-700 rounded-lg mb-3">
@@ -99,9 +101,14 @@
                         <div class="float-right text-center text-md mb-3">
                             <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg" name="prosub">Save Proposal</button>
                         </div>
+                            
+                            
+                       
+                        
                     </form>
                 </div>
             </div>
+            
 
             <div class="col-span-1  mx-auto ">
                 <div class="bg-blue-600 py-2 px-2 text-center text-gray-100 rounded-md">
