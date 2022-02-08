@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2021 at 07:22 PM
+-- Generation Time: Feb 08, 2022 at 04:47 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -48,16 +48,18 @@ INSERT INTO `assign` (`id`, `std_id`, `supervisor_id`) VALUES
 
 CREATE TABLE `chapter1` (
   `student_id` int(11) NOT NULL,
-  `chapter1` longtext NOT NULL
+  `chapter1` longtext NOT NULL,
+  `status` enum('approved','review','started') NOT NULL DEFAULT 'started'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `chapter1`
 --
 
-INSERT INTO `chapter1` (`student_id`, `chapter1`) VALUES
-(1, '<ol><li><strong>WHAT IS RATIONAL AGENT, AN IDEAL RATIONAL AGENT? EXPLAIN THE CONCEPTS OF PERFORMANCE MEASURE AND OMNISCIENCE.</strong></li></ol><p>&nbsp;</p><p>&nbsp;</p><ol><li><strong>WHAT IS RATIONAL AGENT</strong></li></ol><p>A rational agent is one that does the right thing. Instead of doing the wrong thing we will say that the right action is the one that will cause the agent to be most successful.</p><ol><li><strong>WHAT IS AN IDEAL RATIONAL AGENT?</strong></li></ol><p>An ideal rational agent&nbsp;always takes the action that maximizes its performance given the percept sequence and its knowledge of the environment.&nbsp; An ideal rational agent does whatever action is expected to maximize its performance measure, on the basis of the evidence provided by the percept sequence and whatever built-in knowledge the agent has.&nbsp;</p><ol><li><strong>EXPLAIN THE CONCEPTS OF PERFORMANCE MEASURE&nbsp;</strong></li></ol><p>A performance measure embodies the criterion for the success of an agent’s behaviour. When an agent is plunked down in an environment, it generates a sequence of actions according to the percept it receives. This sequence of actions causes the environment to go through the sequence of states. If the sequence is desirable, then the agent has performed well. Obviously there is not one fixed measure suitable for all agents. It is better to design performance measures according to what one actually wants in the environment, rather than according to how one thinks the agent should act.</p><ol><li><strong>OMNISCIENCE.</strong></li></ol><p>An omniscience agent knows the actual outcome of its actions and can act accordingly but perfection is impossible in reality.</p><p>&nbsp;</p>'),
-(2, '<p>fxfgxfhgcngjcmdhgjmhnmzjhmhbjmznmv hmvhgmhnmcgjcgcghcghcgjhmvhjvhgmchjgfgfjangjfchgcfjncdsaszdfgjk,ljksdasdfsdsgfdgfghjgfjghkjjlkjl.hxfdfxzaeattaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaannnnnnnnnnnnnnnnnnnnghfgjhjgfgthyyyyyyyyyyyyyyyyyyyy&nbsp;</p>');
+INSERT INTO `chapter1` (`student_id`, `chapter1`, `status`) VALUES
+(1, '<ol><li><strong>WHAT IS RATIONAL AGENT, AN IDEAL RATIONAL AGENT? EXPLAIN THE CONCEPTS OF PERFORMANCE MEASURE AND OMNISCIENCE.</strong></li></ol><p>&nbsp;</p><p>&nbsp;</p><ol><li><strong>WHAT IS RATIONAL AGENT</strong></li></ol><p>A rational agent is one that does the right thing. Instead of doing the wrong thing we will say that the right action is the one that will cause the agent to be most successful.</p><ol><li><strong>WHAT IS AN IDEAL RATIONAL AGENT?</strong></li></ol><p>An ideal rational agent&nbsp;always takes the action that maximizes its performance given the percept sequence and its knowledge of the environment.&nbsp; An ideal rational agent does whatever action is expected to maximize its performance measure, on the basis of the evidence provided by the percept sequence and whatever built-in knowledge the agent has.&nbsp;</p><ol><li><strong>EXPLAIN THE CONCEPTS OF PERFORMANCE MEASURE&nbsp;</strong></li></ol><p>A performance measure embodies the criterion for the success of an agent’s behaviour. When an agent is plunked down in an environment, it generates a sequence of actions according to the percept it receives. This sequence of actions causes the environment to go through the sequence of states. If the sequence is desirable, then the agent has performed well. Obviously there is not one fixed measure suitable for all agents. It is better to design performance measures according to what one actually wants in the environment, rather than according to how one thinks the agent should act.</p><ol><li><strong>OMNISCIENCE.</strong></li></ol><p>An omniscience agent knows the actual outcome of its actions and can act accordingly but perfection is impossible in reality.</p><p>&nbsp;</p>', 'started'),
+(2, '<p>My proposal seen ok sir &nbsp;i <strong>done the correction here</strong> is the update. ok</p>', 'review'),
+(3, '<p>My proposal seen ok sir &nbsp;i <strong>done the correction here</strong> is the update. ok</p>', 'started');
 
 -- --------------------------------------------------------
 
@@ -67,16 +69,9 @@ INSERT INTO `chapter1` (`student_id`, `chapter1`) VALUES
 
 CREATE TABLE `chapter2` (
   `student_id` int(11) NOT NULL,
-  `chapter2` longtext NOT NULL
+  `chapter2` longtext NOT NULL,
+  `status` enum('approved','review','started') NOT NULL DEFAULT 'started'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `chapter2`
---
-
-INSERT INTO `chapter2` (`student_id`, `chapter2`) VALUES
-(2, ''),
-(2, '');
 
 -- --------------------------------------------------------
 
@@ -114,6 +109,27 @@ CREATE TABLE `chapter5` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `coments`
+--
+
+CREATE TABLE `coments` (
+  `id` int(11) NOT NULL,
+  `sender_id` int(255) NOT NULL,
+  `receiver_id` int(255) NOT NULL,
+  `current_chapter` varchar(255) NOT NULL,
+  `coment` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `coments`
+--
+
+INSERT INTO `coments` (`id`, `sender_id`, `receiver_id`, `current_chapter`, `coment`) VALUES
+(1, 3, 0, '', 'Array');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notifications`
 --
 
@@ -133,7 +149,48 @@ INSERT INTO `notifications` (`id`, `sender_id`, `current_chapter`, `reciever_id`
 (1, 2, 'proposal', 3, 'Just updated my proposal'),
 (2, 3, 'proposal', 0, 'Just updated my proposal'),
 (3, 2, 'proposal', 3, 'Just updated my proposal'),
-(4, 3, 'proposal', 2, 'Just updated my proposal');
+(4, 3, 'proposal', 2, 'Just updated my proposal'),
+(5, 2, 'chapter', 3, 'Just updated my chapter one'),
+(6, 3, 'chapter1', 2, 'Just updated my chapter one'),
+(7, 2, 'chapter', 3, 'Just updated my chapter one'),
+(8, 2, 'chapter', 3, 'Just updated my chapter one'),
+(9, 2, 'chapter', 3, 'Just updated my chapter one'),
+(10, 3, 'chapter1', 2, 'Just updated my chapter one'),
+(11, 2, 'chapter', 3, 'Just updated my chapter one'),
+(12, 3, 'chapter1', 2, 'Just updated my chapter one'),
+(13, 2, 'proposal', 3, 'Just updated my proposal'),
+(14, 3, 'proposal', 0, 'Just updated my proposal'),
+(15, 3, 'proposal', 0, 'Just updated my proposal'),
+(16, 3, 'proposal', 0, 'Just updated my proposal'),
+(17, 3, 'proposal', 0, 'Just updated my proposal'),
+(18, 2, 'proposal', 3, 'Just updated my proposal'),
+(19, 3, 'proposal', 0, 'Just updated my proposal'),
+(20, 3, 'proposal', 0, 'Just updated my proposal'),
+(21, 3, 'proposal', 0, 'Just updated my proposal'),
+(22, 3, 'proposal', 0, 'Just updated my proposal'),
+(23, 3, 'proposal', 0, 'Just updated my proposal'),
+(24, 2, 'chapter', 3, 'Just updated my chapter one'),
+(25, 3, 'proposal', 0, 'Just updated my proposal'),
+(26, 3, 'chapter', 3, 'Just uploaded my chapter one'),
+(27, 3, 'proposal', 0, 'Just updated my proposal'),
+(28, 3, 'proposal', 0, 'Just updated my proposal'),
+(29, 3, 'proposal', 0, 'Just updated my proposal'),
+(30, 3, 'proposal', 0, 'Just updated my proposal'),
+(31, 3, 'proposal', 0, 'Just updated my proposal'),
+(32, 3, 'proposal', 0, 'Just updated my proposal'),
+(33, 3, 'proposal', 0, 'Just updated my proposal'),
+(34, 3, 'proposal', 0, 'Just updated my proposal'),
+(35, 2, 'proposal', 3, 'Just updated my proposal'),
+(36, 3, 'proposal', 0, 'Just updated my proposal'),
+(37, 2, 'proposal', 3, 'Just updated my proposal'),
+(38, 3, 'proposal', 0, 'Just updated my proposal'),
+(39, 3, 'proposal', 0, 'Just updated my proposal'),
+(40, 3, 'proposal', 0, 'Just updated my proposal'),
+(41, 2, 'proposal', 3, 'Just updated my proposal'),
+(42, 3, 'proposal', 0, 'Just updated my proposal'),
+(43, 3, 'proposal', 0, 'Just updated my proposal'),
+(44, 3, 'proposal', 0, 'Just updated my proposal'),
+(45, 0, 'proposal', 3, 'Just uploaded my proposal');
 
 -- --------------------------------------------------------
 
@@ -154,7 +211,7 @@ CREATE TABLE `proposal` (
 --
 
 INSERT INTO `proposal` (`student_id`, `topic`, `motivation`, `proposal`, `status`) VALUES
-(2, 'Design and implementation of an online voting', 'My motivation', '<p>My Bargain Ok</p>', 'review');
+(2, 'Design and implementation of an online voting', 'My motivation', '<ul><li>My propsal&nbsp;</li></ul>', 'review');
 
 -- --------------------------------------------------------
 
@@ -199,6 +256,12 @@ ALTER TABLE `assign`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `coments`
+--
+ALTER TABLE `coments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
@@ -221,10 +284,16 @@ ALTER TABLE `assign`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `coments`
+--
+ALTER TABLE `coments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `users`
