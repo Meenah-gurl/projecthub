@@ -45,20 +45,22 @@
 
 
                             if(isset($_POST['subChp2'])){
+                                $chapter2=$_POST['chapter2'];
+
                                 $query = $conn->query("SELECT * FROM chapter2 WHERE student_id='$stdid '");
                                 if ($query->num_rows > 0) {
-                                    $sql_string= "UPDATE chapter2 SET chapter1='$chapter2', status='review' WHERE student_id='$stdid '";
+                                    $sql_string= "UPDATE chapter2 SET chapter2='$chapter2', status='review' WHERE student_id='$stdid '";
                                     if($conn->query($sql_string)){
                                         $notify->sendNotification($stdid, '3', 'Just updated my chapter two', 'chapter');   
-                                        echo 'Chapter One  Successfully Updated';
+                                        echo 'Chapter Two  Successfully Updated';
                                     }else{
                                         echo'An error occured ' . $conn->error; 
                                     }
                                 }else{
                                     $sql_string="INSERT INTO chapter2(student_id, chapter2)
-                                    VALUES('".$stdid."','".$chapter1."')";
+                                    VALUES('".$stdid."','".$chapter2."')";
                                     if($conn->query($sql_string)){
-                                        $notify->sendNotification($stdid, '3', 'Just uploaded my chapter one', 'chapter');   
+                                        $notify->sendNotification($stdid, '3', 'Just uploaded my chapter two', 'chapter');   
                                         echo 'chapter two   Successfully Submitted';
                                     }else{
                                         echo'An error occured ' . $conn->error;
@@ -76,7 +78,7 @@
                         <div class="mt-4">
                             <label for="" class="capitalize text-gray-800 text-lg">Main-body</label>
                             <div class=" text-gray-700 rounded-lg mb-3">
-                                <textarea name="chapter1" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "></textarea>
+                                <textarea name="chapter2" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "></textarea>
                                 <!-- <input type="text" id="title" v-model="title" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-blue-600 bg-opacity-75 shadow-lg h-12" placeholder="Motivation" required> -->
                             </div>
                         </div>

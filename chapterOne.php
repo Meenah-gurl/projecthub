@@ -46,7 +46,6 @@
                             if(isset($_POST['subChp1'])){
                                 $chapter1=$_POST['chapter1'];
                                 
-
                                 $query = $conn->query("SELECT * FROM chapter1 WHERE student_id='$stdid '");
                                 if ($query->num_rows > 0) {
                                     $sql_string= "UPDATE chapter1 SET chapter1='$chapter1', status='review' WHERE student_id='$stdid '";

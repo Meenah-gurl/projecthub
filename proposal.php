@@ -80,7 +80,7 @@
                             <div >
                                 <label for="" class="capitalize text-gray-800 text-lg">Topic:</label>
                                 <div class=" text-gray-700 rounded-lg mb-3">
-                                    <input type="text" id="topic" name="topic" value="<?php echo $proposal['topic'] ?>" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-white bg-opacity-75 shadow-lg h-12" placeholder="Topic" required>
+                                    <input type="text" id="topic" name="topic" value="<?php echo $proposal['topic'] ? $proposal['topic'] : '' ?>" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-white bg-opacity-75 shadow-lg h-12" placeholder="Topic" required>
                                 </div>
                             </div>
 

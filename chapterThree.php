@@ -53,7 +53,6 @@
                                 }else{
                                     echo'An error occured ' . $conn->error;
                                 }
-                            
                             }
 
                         ?>
@@ -61,7 +60,7 @@
                         <div class="mt-4">
                             <label for="" class="capitalize text-gray-800 text-lg">Main-body</label>
                             <div class=" text-gray-700 rounded-lg mb-3">
-                                <textarea name="chapter1" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "></textarea>
+                                <textarea name="chapter3" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "></textarea>
                                 <!-- <input type="text" id="title" v-model="title" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-blue-600 bg-opacity-75 shadow-lg h-12" placeholder="Motivation" required> -->
                             </div>
                         </div>

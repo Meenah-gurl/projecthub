@@ -101,7 +101,7 @@
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-3 grid-cols-1 gap-7">
+                <!-- <div class="grid md:grid-cols-3 grid-cols-1 gap-7">
                     <div class="bg-blue-600 text-center text-white rounded-lg px-2 py-3 shadow-lg">
                         fvlfkglsr
                     </div>
@@ -113,7 +113,7 @@
                     <div class="bg-green-600 text-center text-white rounded-lg px-2 py-3 shadow-lg">
                         fvlfkglsr
                     </div>
-                </div>
+                </div> -->
             </div>
             
 
