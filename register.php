@@ -114,7 +114,7 @@
                         </div>
 
                         <div class="text-center px-14 mt-10">
-                            <button class="bg-blue-600 text-white rounded-full px-5 py-2 text-md hover:bg-gray-700 hover:text-white w-full" name="btnSubmit">Sign In</button>
+                            <button class="bg-green-700 text-white rounded-full px-5 py-2 text-md hover:bg-gray-700 hover:text-white w-full" name="btnSubmit">Sign In</button>
                         </div>
                    </form>
                </div>
@@ -128,7 +128,7 @@
                     <p class="text-blue font-san text-md text-white">SignIn to have an interactive session with your Project Supervisor</p>
 
                     <div class="text-center mt-96 animate-bounce">
-                        <a href="index.php" class="bg-blue-600 text-white rounded-full px-5 py-3 text-md hover:bg-white hover:text-gray-800">Sign in</a>
+                        <a href="index.php" class="bg-green-700 text-white rounded-full px-5 py-3 text-md hover:bg-white hover:text-gray-800">Sign in</a>
                     </div>
                 </div>
             </div>

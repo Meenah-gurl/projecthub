@@ -83,7 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-blue-600 mb-5 rounded-md px-2 py-2 shadow-lg hover:bg-white hover:text-gray-700 float-right w-40 text-center text-white mt-7">
+            <div class="bg-green-700 mb-5 rounded-md px-2 py-2 shadow-lg hover:bg-white hover:text-gray-700 float-right w-40 text-center text-white mt-7">
                 <button type="submit" class="text-md focus:ouline-none w-full h-full" name="btnAssign">Assign</button>
             </div>
         </form>
@@ -186,7 +186,7 @@
                     $lecturesList=[];
                     respond.lectures.forEach((lecture) => {
                         $lecturesList += `
-                            <div class="option hover:bg-blue-600 cursor-pointer hover:text-white  bg-white">
+                            <div class="option hover:bg-green-700 cursor-pointer hover:text-white  bg-white">
                                 <input type="radio" name="lecturer" value="${lecture.id}" class="w-full rounded-lg hidden appearance-none" id="lect_name">
                                 <label for="lect_name" class="nameSelector block px-4 cursor-pointer py-1">${lecture.fullname}</label>
                             </div>
@@ -196,7 +196,7 @@
                     $StudentList=[];
                     respond.students.forEach((student) => {
                         $StudentList += `
-                            <div class="option hover:bg-blue-600 cursor-pointer hover:text-white  bg-white">
+                            <div class="option hover:bg-green-700 cursor-pointer hover:text-white  bg-white">
                                 <input type="radio" name="student" value="${student.id}" class="w-full rounded-lg hidden appearance-none" id="std_name">
                                 <label for="std_name" class="nameSelector block px-4 cursor-pointer py-1">${student.fullname}</label>
                             </div>

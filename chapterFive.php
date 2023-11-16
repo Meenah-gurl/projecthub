@@ -62,19 +62,19 @@
                             <label for="" class="capitalize text-gray-800 text-lg">Main-body</label>
                             <div class=" text-gray-700 rounded-lg mb-3">
                                 <textarea name="chapter5" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "></textarea>
-                                <!-- <input type="text" id="title" v-model="title" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-blue-600 bg-opacity-75 shadow-lg h-12" placeholder="Motivation" required> -->
+                                <!-- <input type="text" id="title" v-model="title" class=" py-2 w-full px-4 outline-none border-0 rounded-lg bg-green-700 bg-opacity-75 shadow-lg h-12" placeholder="Motivation" required> -->
                             </div>
                         </div>
 
                         <div class="float-right text-center text-md">
-                            <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg" name="subChp5">Submit Chapter Five</button>
+                            <button class="py-2 px-2 text-white bg-green-700 rounded-lg shadow-lg" name="subChp5">Submit Chapter Five</button>
                         </div>
                     </form>
                 </div>
             </div>
 
             <div class="col-span-1  mx-auto ">
-                <div class="bg-blue-600 py-2 px-2 text-center text-gray-100 rounded-md">
+                <div class="bg-green-700 py-2 px-2 text-center text-gray-100 rounded-md">
                     Comments
                 </div>
                 <!-- <form action="" method="post" class="mt-3">

@@ -12,7 +12,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg">
+                        <button class="py-2 px-2 text-white bg-green-700 rounded-lg shadow-lg">
                             Update Proposal
                         </button>
                     </div>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="mb-4">
-        <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg">
+        <button class="py-2 px-2 text-white bg-green-700 rounded-lg shadow-lg">
              Update coment
         </button>
         </div>

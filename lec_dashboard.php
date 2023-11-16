@@ -184,7 +184,7 @@
                    
                      <textarea name="" id="" class="comment outline-none w-full mb-2 px-2"><?php echo $comment ['coment'] ?></textarea>
 
-                    <button class="comment bg-blue-600 text-white py-1 px-2 rounded-md" name="btnsendComment">Send</button> -->
+                    <button class="comment bg-green-700 text-white py-1 px-2 rounded-md" name="btnsendComment">Send</button> -->
                 </form>
             </div>
         </div>

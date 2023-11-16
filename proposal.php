@@ -71,9 +71,19 @@
                             }
 
                             // Fetch Existing Data
-                            $exist_data = $conn->query("SELECT * FROM proposal WHERE student_id='$stdid '");
-                            //  ($exist_data->num_rows > 0) 
+                            $exist_data = $conn->query("SELECT * FROM proposal WHERE student_id='$stdid'");
+                            //  ($exist_data->num_rows > 0)
+                            if ($exist_data->num_rows > 0) {
                                 $proposal = $exist_data->fetch_assoc();
+                            }else{
+                                $proposal = [
+                                    'topic' => '',
+                                    'motivation' => '',
+                                    'proposal' => ''
+                                ];
+                            }
+                            // $proposal = $exist_data->fetch_assoc();
+
 
                                 ?>
                                     <div class="grid md:grid-cols-2 grid-cols-1 gap-5 font-san">
@@ -99,7 +109,7 @@
                         </div>
 
                         <div class="float-right text-center text-md mb-3">
-                            <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg" name="prosub">Save Proposal</button>
+                            <button class="py-2 px-2 text-white bg-green-700 rounded-lg shadow-lg" name="prosub">Save Proposal</button>
                         </div>
                             
                             
@@ -111,7 +121,7 @@
             
 
             <div class="col-span-1  mx-auto ">
-                <div class="bg-blue-600 py-2 px-2 text-center text-gray-100 rounded-md">
+                <div class="bg-green-700 py-2 px-2 text-center text-gray-100 rounded-md">
                     Comments
                 </div>
                 <!-- <form action="" method="post" class="mt-3">

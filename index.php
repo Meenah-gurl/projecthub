@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="text-center px-14 mt-10 cursor-pointer">
-                            <button class="bg-blue-600 text-white rounded-full px-5 py-2 text-md hover:bg-gray-700 hover:text-white w-full" name="btnlogin">Sign In</button>
+                            <button class="bg-green-700 text-white rounded-full px-5 py-2 text-md hover:bg-gray-700 hover:text-white w-full" name="btnlogin">Sign In</button>
                         </div>
                    </form>
                </div>
@@ -90,7 +90,7 @@
                     <p class="text-blue font-san text-md text-white">SignUp to have an interactive session with your Project Supervisor</p>
 
                     <div class="text-center mt-64 animate-bounce">
-                        <a href="register.php" class="bg-blue-600 text-white rounded-full px-5 py-3 text-md hover:bg-white hover:text-gray-800">Sign Up</a>
+                        <a href="register.php" class="bg-green-700 text-white rounded-full px-5 py-3 text-md hover:bg-white hover:text-gray-800">Sign Up</a>
                     </div>
                 </div>
             </div>

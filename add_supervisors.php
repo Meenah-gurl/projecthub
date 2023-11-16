@@ -103,7 +103,7 @@
                        </div>
                     </div>
                     
-                    <div class="mt-5 rounded-lg shadow-lg px-3 py-2 text-white bg-blue-600 mx-auto w-40 text-center">
+                    <div class="mt-5 rounded-lg shadow-lg px-3 py-2 text-white bg-green-700 mx-auto w-40 text-center">
                         <button name="btnAddsuper">Add Supervisors</button>
                     </div>
                 </form>

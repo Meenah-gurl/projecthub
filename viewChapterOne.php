@@ -11,7 +11,7 @@
                         <textarea name="chapter1" id="editor" class="rounded-lg  bg-opacity-75 shadow-lg "><?php echo $row['chapter1'];?></textarea>
                     </div>
                     <div class="mb-4">
-                        <button class="py-2 px-2 text-white bg-blue-600 rounded-lg shadow-lg">
+                        <button class="py-2 px-2 text-white bg-green-700 rounded-lg shadow-lg">
                             Update Chapter One
                         </button>
                     </div>

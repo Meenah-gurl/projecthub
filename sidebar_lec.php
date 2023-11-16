@@ -10,7 +10,7 @@
     </div>
 
     <div class="py-3 px-3 bg-white rounded-xl">
-        <div class="bg-blue-600 py-2 px-2 text-center text-gray-100 rounded-md mb-3">
+        <div class="bg-green-700 py-2 px-2 text-center text-gray-100 rounded-md mb-3">
            New Updates
         </div>
 

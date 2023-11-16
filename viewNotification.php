@@ -28,7 +28,7 @@
         
         <div class="grid grid-col-1 md:grid-cols-3 gap-4">
             <div class="md:col-span-2">
-                <div class="bg-blue-600 py-2 px-2 text-center text-gray-100 rounded-md">
+                <div class="bg-green-700 py-2 px-2 text-center text-gray-100 rounded-md">
                     Message
                 </div>
                 <div class="bg-white shadow-lg rounded-lg py-5 mt-3">
@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="">
-                <div class="bg-blue-600 py-2 px-2 text-center text-gray-100 rounded-md">
+                <div class="bg-green-700 py-2 px-2 text-center text-gray-100 rounded-md">
                     All Notification
                 </div>
                 <div class="bg-white shadow-lg rounded-lg py-5 mt-3">

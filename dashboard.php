@@ -56,7 +56,7 @@
                         <div class="flex gap-3 mt-3">
                             <span>Proposal:</span>
                             <div class="mt-3 w-full bg-gray-200 rounded-full h-1.5">
-                                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 50%"></div>
+                                <div class="bg-green-700 h-1.5 rounded-full" style="width: 50%"></div>
                             </div>
                         </div>
 
@@ -70,7 +70,7 @@
                         <div class="flex gap-3 mt-3">
                             <div class="flex-grow flex-shrink-0">Chapter Two:</div>
                             <div class="mt-3 w-full bg-gray-200 rounded-full h-1.5 flex-initial">
-                                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 40%"></div>
+                                <div class="bg-green-700 h-1.5 rounded-full" style="width: 40%"></div>
                             </div>
                         </div>
 
@@ -84,7 +84,7 @@
                         <div class="flex gap-3 mt-3">
                             <div class="flex-grow flex-shrink-0">Chapter Four:</div>
                             <div class="mt-3 w-full bg-gray-200 rounded-full h-1.5 flex-initial">
-                                <div class="bg-blue-600 h-1.5 rounded-full" style="width: 50%"></div>
+                                <div class="bg-green-700 h-1.5 rounded-full" style="width: 50%"></div>
                             </div>
                         </div>
 
@@ -102,7 +102,7 @@
                 </div>
 
                 <!-- <div class="grid md:grid-cols-3 grid-cols-1 gap-7">
-                    <div class="bg-blue-600 text-center text-white rounded-lg px-2 py-3 shadow-lg">
+                    <div class="bg-green-700 text-center text-white rounded-lg px-2 py-3 shadow-lg">
                         fvlfkglsr
                     </div>
 
@@ -118,7 +118,7 @@
             
 
             <div class="col-span-1  mx-auto ">
-                <div class="bg-blue-600 py-2 px-2 text-center text-gray-100 rounded-md">
+                <div class="bg-green-700 py-2 px-2 text-center text-gray-100 rounded-md">
                    All Comments
                 </div>
                 <!-- <form action="" method="post" class="mt-3">
